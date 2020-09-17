@@ -1,19 +1,15 @@
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom'
+import React from 'react';
+// import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom'
 import './App.css';
-import { observer } from 'mobx-react'
+import SearchIngredient from './components/Search/SearchIngredient'
 
-@observer
-class App extends Component {
+function App(props) {
 
-  render() {
-    return (
-      <div>
-
-
-      </div>
-    )
-  }
+  return (
+    <div>
+      <SearchIngredient />
+    </div>
+  )
 }
 
 export default App;
