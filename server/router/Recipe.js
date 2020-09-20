@@ -1,19 +1,26 @@
 const express = require("express");
 const recipeRouter = express.Router();
 const dataSources = require("../dataSources/DataSources");
+const CircularJSON = require('circular-json')
+
+recipeRouter.get('/:id', async (req, res) => {
+    let { id } = req.params
+    let response = await dataSources.foodAPI.getRecipeById(id)
+    console.log(response)
+    res.send(response.data)
+})
 
 recipeRouter.post('/ingredients', async (req, res) => {
-    let { ingredients } = req.body
-    ingredients = ingredients.map(ingredient => `+${ingredient},`)
+    let { ingredientList } = req.body
+    let ingredients = ingredientList.map(ingredient => `+${ingredient},`)
 
-    const response = await dataSources.foodAPI.getRecipeByIngredients(ingredients)
-    response.send(response)
+    let response = await dataSources.foodAPI.getRecipeByIngredients(ingredients)
+    res.send(CircularJSON.stringify(response.data))
 })
 
 recipeRouter.get('/ingredient/search', async (req, res) => {
     const { input } = req.query
-    const response = await dataSources.foodAPI.searchIngredient(input)
-    res.send(response)
+    res.send(await dataSources.foodAPI.searchIngredient(input))
 })
 
 module.exports = recipeRouter;

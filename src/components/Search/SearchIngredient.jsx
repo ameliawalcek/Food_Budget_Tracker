@@ -3,26 +3,31 @@ import TextField from '@material-ui/core/TextField'
 import Autocomplete from '@material-ui/lab/Autocomplete'
 import { observer, inject } from 'mobx-react'
 
-const Search = inject("inputStore")(observer((props) => {
+const Search = inject('inputStore', 'recipeStore')(observer((props) => {
 
-    let { input, ingredientOptions } = props.inputStore
+    let { ingredientOptions } = props.inputStore
+
+    const handleClick = () => props.recipeStore.getRecipeByIngredients()
 
     return (
         <div style={{ width: 300 }}>
             <Autocomplete
                 id="searchInput"
+                size="small"
                 multiple
-                limitTags={2}
+                limitTags={5}
                 options={ingredientOptions}
-                getOptionLabel={(option) => option.title}
-                filter={(searchText, key) => true}
+                getOptionLabel={option => option.name}
                 onChange={(_, value) => {
-                    props.inputStore.handleInput(value)
+                    value = value.map(v => v.name)
+                    props.recipeStore.handleTags(value)
                 }}
                 renderInput={(params) => (
-                    <TextField {...params} onChange={props.inputStore.handleInput} label="controlled" margin="normal" />
+                    <TextField {...params} color='secondary' onChange={props.inputStore.handleInput}
+                        label="Search ingredients" margin="normal" />
                 )}
             />
+            <button onClick={handleClick}>Search</button>
         </div>
     )
 }))

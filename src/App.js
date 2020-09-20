@@ -1,15 +1,29 @@
 import React from 'react';
-// import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom'
+import { observer, inject } from "mobx-react"
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { ThemeProvider } from '@material-ui/core'
 import './App.css';
-import SearchIngredient from './components/Search/SearchIngredient'
+import SearchPage from './components/Search/SearchPage'
+import RecipePage from './components/Recipe/RecipePage'
+import NavBar from './components/Nav/NavBar'
+import { useTheme } from './hooks/hooks'
 
-function App(props) {
+const App = inject("userStore")(observer(props => {
+  const { darkState } = props.userStore
+  const darkTheme = useTheme(darkState)
 
   return (
-    <div>
-      <SearchIngredient />
-    </div>
+    <Router>
+      <ThemeProvider theme={darkTheme}>
+        <div>
+          <NavBar />
+          <Route exact path="/" render={() => <SearchPage />} />
+          <Route exact path="/recipe/:id" render={() => <RecipePage />} />
+        </div>
+      </ThemeProvider>
+
+    </Router>
   )
-}
+}))
 
 export default App;
