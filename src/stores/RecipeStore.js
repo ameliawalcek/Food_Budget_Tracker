@@ -5,6 +5,7 @@ export class RecipeStore {
     @observable searchIngredientList = []
     @observable recipeResults = []
     @observable loading = false
+    @observable checked = false
 
     @observable recipeOverview =
         {
@@ -997,6 +998,8 @@ export class RecipeStore {
 
     @action setLoading = (bool) => this.loading = bool
 
+    @action setChecked = () => this.checked = !this.checked
+    
     @action async getRecipeById(id) {
         // this.setLoading(true)
         // let response = await axios.get(`http://localhost:3001/recipe/${id}`)
@@ -1018,4 +1021,10 @@ export class RecipeStore {
     @action handleTags = searchTags => this.searchIngredientList = searchTags
 
     @action cleanRecipeData = () => this.recipe = []
+
+    @action getDollars = cents => {
+        let dollars = cents / 100
+        return dollars.toLocaleString('en-US', { style: "currency", currency: "USD" })
+    }
+
 }

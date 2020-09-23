@@ -4,7 +4,6 @@ import Autocomplete from '@material-ui/lab/Autocomplete'
 import { observer, inject } from 'mobx-react'
 
 const Search = inject('inputStore', 'recipeStore')(observer((props) => {
-
     let { ingredientOptions } = props.inputStore
 
     const handleClick = () => props.recipeStore.getRecipeByIngredients()

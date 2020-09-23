@@ -14,7 +14,7 @@ const RecipeOverview = inject('recipeStore')(observer((props) => {
             {recipeOverview.dishTypes &&
                 recipeOverview.dishTypes.map(type => <div key={type}>{type}</div>)
             }
-        </ >
+        </>
     )
 }))
 

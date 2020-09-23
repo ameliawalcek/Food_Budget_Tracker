@@ -1,13 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { observer, inject } from 'mobx-react'
+import CostPie from '../Graphs/CostPie'
+import CostTable from '../Graphs/CostTable'
 
-const RecipeCost = inject('recipeStore')(observer((props) => {
-    const { recipeCost } = props.recipeStore
-
-    const getDollars = cents => {
-        let dollars = cents / 100
-        return dollars.toLocaleString('en-US', {style:"currency", currency:"USD"})
-    }
+const RecipeCost = inject('recipeStore', 'userStore')(observer((props) => {
+    const { recipeCost, getDollars } = props.recipeStore
 
     return (
         <>
@@ -15,7 +12,8 @@ const RecipeCost = inject('recipeStore')(observer((props) => {
                 {getDollars(recipeCost.totalCost)}
                 {getDollars(recipeCost.totalCostPerServing)} per serving
             </div>
-
+            <CostPie />
+            <CostTable/>
         </>
     )
 }))
