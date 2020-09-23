@@ -15,7 +15,7 @@ const App = inject("userStore")(observer(props => {
   return (
     <Router>
       <ThemeProvider theme={darkTheme}>
-        <div>
+        <div className='main-container'>
           <NavBar />
           <Route exact path="/" render={() => <SearchPage />} />
           <Route exact path="/recipe/:id" render={() => <RecipePage />} />

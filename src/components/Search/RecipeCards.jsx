@@ -1,8 +1,8 @@
 import React from 'react'
 import { observer, inject } from 'mobx-react'
-import Result from './Result'
+import Result from './RecipeCard'
 
-const Results = inject('inputStore', 'recipeStore')(observer((props) => {
+const RecipeCards = inject('inputStore', 'recipeStore')(observer((props) => {
     let { recipeResults } = props.recipeStore
 
     return (
@@ -12,4 +12,4 @@ const Results = inject('inputStore', 'recipeStore')(observer((props) => {
     )
 }))
 
-export default Results
+export default RecipeCards

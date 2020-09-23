@@ -7,7 +7,7 @@ recipeRouter.get('/:id', async (req, res) => {
     let { id } = req.params
     let response = await dataSources.foodAPI.getRecipeById(id)
     console.log(response)
-    res.send(response.data)
+    res.send(response)
 })
 
 recipeRouter.post('/ingredients', async (req, res) => {

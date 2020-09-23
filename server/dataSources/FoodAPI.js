@@ -11,20 +11,16 @@ class FoodAPI {
         const [overview, ingredients, nutrition, cost, instructions] =
             await Promise.all([
                 this.getOverviewById(id),
-                this.getIngredientsById(id),
                 this.getNutritionById(id),
                 this.getCostById(id),
                 this.getInstructionsById(id)
-            ]).catch(e => console.log(e.response))
+            ])
+            .catch(e => console.log(e.response))
         return { overview, ingredients, nutrition, cost, instructions }
     }
 
     async getOverviewById(id) {
         return (await axios(`${this.baseRecipeUrl}/${id}/information?includeNutrition=true&apiKey=${this.key}`)).data
-    }
-
-    async getIngredientsById(id) {
-        return (await axios(`${this.baseRecipeUrl}/${id}/ingredientWidget.json?apiKey=${this.key}`)).data.ingredients
     }
 
     async getNutritionById(id) {
@@ -44,17 +40,16 @@ class FoodAPI {
     }
 
     async searchIngredient(ingredient) {
-        return (await axios(`${this.baseUrl}food/ingredients/autocomplete?apiKey=${this.key}&query=${ingredient}&number=5`)).data
+        return (await axios(`${this.baseUrl}food/ingredients/autocomplete?apiKey=${this.key}&query=${ingredient}&number=1`)).data
     }
 
     // async getRecipeDetails(id, string){
     //     return (await axios(`${this.baseRecipeUrl}/${id}/${string}?apiKey=${this.key}`)).data
     // }
     // this.getOverviewById(id),
-    // this.getRecipeDetails(id, 'ingredientWidget.json'),
-    // this.getNutritionById(id, 'nutritionWidget.json'),
-    // this.getCostById(id, 'priceBreakdownWidget.json'),
-    // this.getInstructionsById(id, 'analyzedInstructions')
+    // this.getRecipeDetails(id, 'nutritionWidget.json'),
+    // this.getRecipeDetails(id, 'priceBreakdownWidget.json'),
+    // this.getRecipeDetails(id, 'analyzedInstructions')
 }
 
 module.exports = FoodAPI;
