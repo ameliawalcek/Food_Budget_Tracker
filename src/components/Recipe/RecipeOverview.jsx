@@ -8,9 +8,11 @@ const RecipeOverview = inject('recipeStore')(observer((props) => {
         <>
             {recipeOverview.title}
             <img src={recipeOverview.image} alt={recipeOverview.title} />
-            {recipeOverview.readyInMinutes} minutes
-            {recipeOverview.Servings}
-            {recipeOverview.pricePerServing}
+            {recipeOverview.readyInMinutes} min
+            preparation: {recipeOverview.preparationMinutes} min
+            cook time: {recipeOverview.cookingMinutes}
+            {recipeOverview.Servings} servings
+            {recipeOverview.aggregateLikes} likes
             {recipeOverview.dishTypes &&
                 recipeOverview.dishTypes.map(type => <div key={type}>{type}</div>)
             }

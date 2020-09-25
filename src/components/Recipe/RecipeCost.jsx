@@ -13,7 +13,7 @@ const RecipeCost = inject('recipeStore', 'userStore')(observer((props) => {
                 {getDollars(recipeCost.totalCostPerServing)} per serving
             </div>
             <CostPie />
-            <CostTable/>
+            <CostTable />
         </>
     )
 }))

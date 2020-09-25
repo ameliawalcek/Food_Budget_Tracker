@@ -5,30 +5,34 @@ class FoodAPI {
         this.baseUrl = `https://api.spoonacular.com/`
         this.baseRecipeUrl = `https://api.spoonacular.com/recipes`
         this.key = process.env.SPOONACULAR_API_KEY
+        // this.key = process.env.SPOONACULAR_API_KEY_TWO
     }
 
     async getRecipeById(id) {
-        const [overview, ingredients, nutrition, cost, instructions] =
+        const [
+            overview,
+            cost,
+            instructions
+        ] =
             await Promise.all([
                 this.getOverviewById(id),
-                this.getNutritionById(id),
                 this.getCostById(id),
                 this.getInstructionsById(id)
             ])
-            .catch(e => console.log(e.response))
-        return { overview, ingredients, nutrition, cost, instructions }
+                .catch(e => console.log(e.response))
+        return {
+            overview,
+            cost,
+            instructions
+        }
     }
 
     async getOverviewById(id) {
         return (await axios(`${this.baseRecipeUrl}/${id}/information?includeNutrition=true&apiKey=${this.key}`)).data
     }
 
-    async getNutritionById(id) {
-        return (await axios(`${this.baseRecipeUrl}/${id}/nutritionWidget.json?apiKey=${this.key}`)).data
-    }
-
     async getCostById(id) {
-        return (await axios(`${this.baseRecipeUrl}/${id}/ingredientWidget.json?apiKey=${this.key}`)).data.ingredients
+        return (await axios(`${this.baseRecipeUrl}/${id}/priceBreakdownWidget.json?apiKey=${this.key}`)).data
     }
 
     async getInstructionsById(id) {

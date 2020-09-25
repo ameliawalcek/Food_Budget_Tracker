@@ -8,7 +8,7 @@ const CostPie = inject('recipeStore', 'userStore')(observer((props) => {
     let costBreakdown = []
 
     const getCostBreakdown = () => {
-        recipeCost.ingredients.map(ingredient => {
+        recipeCost.ingredients && recipeCost.ingredients.map(ingredient => {
             costBreakdown.push({
                 'id': ingredient.name,
                 'label': ingredient.name,

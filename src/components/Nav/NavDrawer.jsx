@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { observer, inject } from 'mobx-react'
 import { Link } from 'react-router-dom'
 import {
-    IconButton, Switch, ListItem, ListItemText, Drawer, List, ListItemIcon
+    IconButton, Switch, ListItem, ListItemText, Drawer, List, ListItemIcon, Avatar, Divider
 } from '@material-ui/core'
 import Brightness2RoundedIcon from '@material-ui/icons/Brightness2Rounded'
 import NotificationsIcon from '@material-ui/icons/Notifications'
@@ -11,6 +11,11 @@ import ExploreIcon from '@material-ui/icons/Explore'
 import HomeIcon from '@material-ui/icons/Home'
 import MenuIcon from '@material-ui/icons/Menu'
 import { useStyles } from '../Styles/Nav'
+import SearchIcon from '@material-ui/icons/Search';
+import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
+import KitchenIcon from '@material-ui/icons/Kitchen';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import EventIcon from '@material-ui/icons/Event';
 
 const NavDrawer = inject('inputStore', 'recipeStore', 'userStore')(observer((props) => {
     const { darkState, handleDarkStateChange } = props.userStore
@@ -22,9 +27,11 @@ const NavDrawer = inject('inputStore', 'recipeStore', 'userStore')(observer((pro
     const handleDrawerClose = () => setOpen(false)
 
     const icons = [
-        { icon: <HomeIcon />, link: '/dashboard', title: `Dashboard` },
-        { icon: <ExploreIcon />, link: '/explore', title: `Explore` },
-        { icon: <NotificationsIcon />, link: '/notifications', title: `Notifications` }
+        { icon: <SearchIcon />, link: '/', title: `Search` },
+        { icon: <EventIcon />, link: '/weekplan', title: `Meal Plan` },
+        { icon: <FormatListBulletedIcon />, link: '/list', title: `Shopping List` },
+        { icon: <FavoriteBorderIcon />, link: '/favorites', title: `Favorites` },
+        { icon: <KitchenIcon />, link: '/kitchen', title: `My Kitchen` },
     ]
 
     return (
@@ -48,6 +55,20 @@ const NavDrawer = inject('inputStore', 'recipeStore', 'userStore')(observer((pro
                     paper: classes.drawerPaperHeader,
                 }}
             >
+                <List>
+                    <ListItem
+                        button
+                        component={Link}
+                        to={`/profile`}
+                        style={{ height: 60 }}
+                    >
+                        <ListItemIcon>
+                            <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                        </ListItemIcon>
+                        <ListItemText primary='My Profile' />
+                    </ListItem>
+                </List>
+                <Divider />
                 <List className={classes.listHightHeader}>
                     {icons.map(i => {
                         return (

@@ -2,6 +2,7 @@ import { observable, action } from 'mobx'
 
 export class UserStore {
     @observable budget
+    @observable isLoggedIn = false
     @observable pantry = []
     @observable shoppingList = []
     @observable favoriteRecipes = []

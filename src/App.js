@@ -1,15 +1,17 @@
-import React from 'react';
+import React from 'react'
+import './App.css'
 import { observer, inject } from "mobx-react"
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 import { ThemeProvider } from '@material-ui/core'
-import './App.css';
+import { useTheme } from './hooks/hooks'
 import SearchPage from './components/Search/SearchPage'
+import WeekPlanner from './components/Calender/WeekPlanner'
 import RecipePage from './components/Recipe/RecipePage'
 import NavBar from './components/Nav/NavBar'
-import { useTheme } from './hooks/hooks'
+import Login from './components/Login/Login'
 
 const App = inject("userStore")(observer(props => {
-  const { darkState } = props.userStore
+  const { darkState, isLoggedIn } = props.userStore
   const darkTheme = useTheme(darkState)
 
   return (
@@ -17,13 +19,20 @@ const App = inject("userStore")(observer(props => {
       <ThemeProvider theme={darkTheme}>
         <div className='main-container'>
           <NavBar />
+          <Route exact path="/auth/login" render={() => (isLoggedIn ? <Redirect to="/" /> : <Login />)} />
+          <Route exact path="/auth/register" render={() => (isLoggedIn ? <Redirect to="/" /> : <Login />)} />
           <Route exact path="/" render={() => <SearchPage />} />
+          <Route exact path="/profile" render={() => <SearchPage />} />
           <Route exact path="/recipe/:id" render={() => <RecipePage />} />
+          <Route exact path="/list" render={() => <RecipePage />} />
+          <Route exact path="/favorites" render={() => <RecipePage />} />
+          <Route exact path="/kitchen" render={() => <RecipePage />} />
+          <Route exact path="/weekplan" render={() => <WeekPlanner />} />
+
         </div>
       </ThemeProvider>
-
     </Router>
   )
 }))
 
-export default App;
+export default App

@@ -1,25 +1,31 @@
 import React from 'react'
 import { observer, inject } from 'mobx-react'
-import { Paper, Box } from '@material-ui/core'
+import { Paper, Grid, GridList } from '@material-ui/core'
 import SearchIngredient from './SearchIngredient'
 import EmptyCard from './EmptyCard'
-import Results from './RecipeCards'
+import RecipeCards from './RecipeCards'
 import Loading from '../Loader/Loading'
 import { useRootStyles } from '../Styles/Root'
+import { useStyles } from '../Styles/Search'
 
-const SearchPage = inject('inputStore', 'recipeStore')(observer((props) => {
+const SearchPage = inject('recipeStore')(observer((props) => {
     let { recipeResults, loading } = props.recipeStore
     const classesRoot = useRootStyles()
+    const classes = useStyles()
 
     return (
         <Paper square className={classesRoot.paperRoot}>
             <Paper square elevation={0}>
                 <SearchIngredient />
                 {loading && <Loading />}
-                {recipeResults.length && !loading
-                    ? <Results />
-                    : <EmptyCard />
-                }
+                <Grid container>
+                    <GridList cellHeight={180} className={classes.rootMedia}>
+                        {recipeResults.length && !loading
+                            ? <RecipeCards />
+                            : <EmptyCard />
+                        }
+                    </GridList>
+                </Grid>
             </Paper>
         </Paper>
     )
