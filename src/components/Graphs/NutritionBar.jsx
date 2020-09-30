@@ -10,7 +10,7 @@ const NutritionBar = inject('recipeStore', 'userStore')(observer((props) => {
 
     const getNutritionBreakdown = () => {
         recipeOverview.nutrition &&
-            recipeOverview.nutrition.nutrients.map(nutrient => {
+            recipeOverview.nutrition.nutrients.forEach(nutrient => {
                 if (nutrient.amount === 0 || nutrient.title === 'Alcohol') return
                 nutritionBreakdown.push({
                     'nutrient': nutrient.title,

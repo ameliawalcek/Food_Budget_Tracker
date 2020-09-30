@@ -9,6 +9,7 @@ import WeekPlanner from './components/Calender/WeekPlanner'
 import RecipePage from './components/Recipe/RecipePage'
 import NavBar from './components/Nav/NavBar'
 import Login from './components/Login/Login'
+import Favorites from './components/Favorites/Favorites'
 
 const App = inject("userStore")(observer(props => {
   const { darkState, isLoggedIn } = props.userStore
@@ -25,7 +26,7 @@ const App = inject("userStore")(observer(props => {
           <Route exact path="/profile" render={() => <SearchPage />} />
           <Route exact path="/recipe/:id" render={() => <RecipePage />} />
           <Route exact path="/list" render={() => <RecipePage />} />
-          <Route exact path="/favorites" render={() => <RecipePage />} />
+          <Route exact path="/favorites" render={() => <Favorites />} />
           <Route exact path="/kitchen" render={() => <RecipePage />} />
           <Route exact path="/weekplan" render={() => <WeekPlanner />} />
 

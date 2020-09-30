@@ -3,7 +3,7 @@ import { observer, inject } from 'mobx-react'
 import NutritionBar from '../Graphs/NutritionBar'
 
 const RecipeNutrition = inject('recipeStore')(observer((props) => {
-    const { recipeOverview, loading } = props.recipeStore
+    const { recipeOverview } = props.recipeStore
 
     return (
        

@@ -8,7 +8,7 @@ const CostPie = inject('recipeStore', 'userStore')(observer((props) => {
     let costBreakdown = []
 
     const getCostBreakdown = () => {
-        recipeCost.ingredients && recipeCost.ingredients.map(ingredient => {
+        recipeCost.ingredients && recipeCost.ingredients.forEach(ingredient => {
             costBreakdown.push({
                 'id': ingredient.name,
                 'label': ingredient.name,
@@ -19,6 +19,7 @@ const CostPie = inject('recipeStore', 'userStore')(observer((props) => {
 
     useEffect(() => {
         getCostBreakdown()
+        
     }, [darkState])
 
     return (

@@ -5,10 +5,7 @@ import {
     IconButton, Switch, ListItem, ListItemText, Drawer, List, ListItemIcon, Avatar, Divider
 } from '@material-ui/core'
 import Brightness2RoundedIcon from '@material-ui/icons/Brightness2Rounded'
-import NotificationsIcon from '@material-ui/icons/Notifications'
 import Brightness4Icon from '@material-ui/icons/Brightness4'
-import ExploreIcon from '@material-ui/icons/Explore'
-import HomeIcon from '@material-ui/icons/Home'
 import MenuIcon from '@material-ui/icons/Menu'
 import { useStyles } from '../Styles/Nav'
 import SearchIcon from '@material-ui/icons/Search';

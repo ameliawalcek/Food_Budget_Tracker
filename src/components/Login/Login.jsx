@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { observer, inject } from 'mobx-react'
 import { useLocation } from 'react-router-dom'
 import { useRootStyles } from '../Styles/Root'

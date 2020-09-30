@@ -10,8 +10,16 @@ const RecipeCards = inject('recipeStore')(observer((props) => {
         <>
             {recipeResults.map(result => {
                 return (
-                    <Grid item xs={12} sm={4} md={3} lg={3}>
-                        <RecipeCard recipe={result} key={result.id} />
+                    <Grid
+                        container
+                        item
+                        direction="row"
+                        justify="center"
+                        alignItems="center"
+                        key={result.id} 
+                        xs={12} sm={4} md={3} lg={3}
+                    >
+                        <RecipeCard recipe={result}/>
                     </Grid>
                 )
             })}

@@ -11,8 +11,12 @@ const WeekPlanner = inject('recipeStore', 'userStore')(observer((props) => {
     return (
         <Paper square className={classesRoot.paperRoot}>
             <Paper square elevation={0}>
-                <Grid container>
-                    {days.map(day => <Day day={day} />)}
+                <Grid container
+                    direction="row"
+                    justify="center"
+                    alignItems="center"
+                >
+                    {days.map(day => <Day day={day} key={day} />)}
                 </Grid>
             </Paper >
         </Paper >
