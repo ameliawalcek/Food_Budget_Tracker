@@ -14,11 +14,12 @@ import KitchenIcon from '@material-ui/icons/Kitchen';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import EventIcon from '@material-ui/icons/Event';
 
-const NavDrawer = inject('inputStore', 'recipeStore', 'userStore')(observer((props) => {
-    const { darkState, handleDarkStateChange } = props.userStore
+const NavDrawer = inject('userStore')(observer((props) => {
+    const { darkState, handleDarkStateChange, isLoggedIn, cookieLogOut, user } = props.userStore
 
     const classes = useStyles()
     const [open, setOpen] = useState(false)
+    const handleLogOut = () => cookieLogOut()
 
     const handleDrawerOpen = () => setOpen(true)
     const handleDrawerClose = () => setOpen(false)
@@ -60,7 +61,7 @@ const NavDrawer = inject('inputStore', 'recipeStore', 'userStore')(observer((pro
                         style={{ height: 60 }}
                     >
                         <ListItemIcon>
-                            <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                            <Avatar color="secondary" alt={user.firstName} src="/static/images/avatar/1.jpg" />
                         </ListItemIcon>
                         <ListItemText primary='My Profile' />
                     </ListItem>
@@ -90,6 +91,12 @@ const NavDrawer = inject('inputStore', 'recipeStore', 'userStore')(observer((pro
                                 onChange={handleDarkStateChange}
                             />
                         </ListItemIcon>
+                    </ListItem>
+                    <ListItem>
+                        {isLoggedIn
+                            ? <Link to='/auth/login' onClick={handleLogOut}>Logout</Link>
+                            : <Link to='/auth/login'>Login</Link>
+                        }
                     </ListItem>
                 </List>
             </Drawer>

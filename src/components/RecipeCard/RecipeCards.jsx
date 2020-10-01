@@ -4,11 +4,10 @@ import RecipeCard from './RecipeCard'
 import { Grid } from '@material-ui/core'
 
 const RecipeCards = inject('recipeStore')(observer((props) => {
-    let { recipeResults } = props.recipeStore
 
     return (
         <>
-            {recipeResults.map(result => {
+            {props.recipes.map(result => {
                 return (
                     <Grid
                         container
@@ -16,7 +15,7 @@ const RecipeCards = inject('recipeStore')(observer((props) => {
                         direction="row"
                         justify="center"
                         alignItems="center"
-                        key={result.id} 
+                        key={result} 
                         xs={12} sm={4} md={3} lg={3}
                     >
                         <RecipeCard recipe={result}/>

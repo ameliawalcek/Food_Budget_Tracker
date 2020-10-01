@@ -1,5 +1,5 @@
 import React from 'react'
-import RecipeCard from '../Search/RecipeCard'
+import RecipeCard from '../RecipeCard/RecipeCard'
 import { observer, inject } from 'mobx-react'
 import { Grid, Typography } from '@material-ui/core'
 
@@ -8,7 +8,7 @@ const WeekPlanner = inject('recipeStore', 'userStore')(observer((props) => {
 
     return (
         <>
-            <Grid container xs={12} sm={6} md={3} lg={3}
+            <Grid container item xs={12} sm={6} md={3} lg={3}
                 direction="row"
                 justify="center"
                 alignItems="center"

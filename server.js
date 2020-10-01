@@ -2,6 +2,7 @@ const express = require("express")
 const mongoose = require('mongoose')
 const bodyParser = require("body-parser")
 const app = express()
+const authRoutes = require("./server/router/Auth.js")
 const userRouter = require("./server/router/User")
 const recipeRouter = require('./server/router/Recipe')
 
@@ -26,8 +27,9 @@ app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", req.headers.origin)
   res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,UPDATE,OPTIONS")
   next()
-});
+})
 
+app.use("/auth", authRoutes)
 app.use("/user", userRouter)
 app.use("/recipe", recipeRouter)
 

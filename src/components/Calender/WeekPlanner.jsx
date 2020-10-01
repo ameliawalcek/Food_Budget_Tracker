@@ -6,8 +6,8 @@ import { Paper, Grid } from '@material-ui/core'
 
 const WeekPlanner = inject('recipeStore', 'userStore')(observer((props) => {
     const classesRoot = useRootStyles()
-
     const days = ['Sunday', 'Monday', "Tuesday", 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+
     return (
         <Paper square className={classesRoot.paperRoot}>
             <Paper square elevation={0}>

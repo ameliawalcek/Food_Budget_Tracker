@@ -21,6 +21,8 @@ const RecipePage = inject('recipeStore')(observer((props) => {
         recipeStore.getRecipeById(pathname.split('/')[2])
 
         return () => recipeStore.cleanRecipeData()
+        
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (

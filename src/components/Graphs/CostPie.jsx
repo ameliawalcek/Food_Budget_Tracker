@@ -19,7 +19,8 @@ const CostPie = inject('recipeStore', 'userStore')(observer((props) => {
 
     useEffect(() => {
         getCostBreakdown()
-        
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [darkState])
 
     return (

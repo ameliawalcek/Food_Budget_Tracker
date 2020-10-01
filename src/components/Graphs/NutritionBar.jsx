@@ -22,6 +22,8 @@ const NutritionBar = inject('recipeStore', 'userStore')(observer((props) => {
 
     useEffect(() => {
         getNutritionBreakdown()
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [darkState])
 
     return (

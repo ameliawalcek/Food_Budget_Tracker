@@ -12,12 +12,13 @@ export const useStyles = makeStyles((theme) => ({
         padding: 10,
     },
     landingBackground: {
-        background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
-        border: 0,
+        // background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+        // color: 'white',
         borderRadius: 20,
         boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-        color: 'white',
         width: '80%',
+        height: '75vh',
+        marginTop: '8vh',
         marginLeft: '10%',
         marginRight: '10%'
     },

@@ -1,22 +1,48 @@
 import React from 'react'
+import Input from '../Items/Input'
+import Button from '../Items/Button'
 import { observer, inject } from 'mobx-react'
 import { useLocation } from 'react-router-dom'
 import { useRootStyles } from '../Styles/Root'
-import { Paper, Grid, Typography, Button as UIButton } from '@material-ui/core'
-import Input from '../Items/Input'
-import Button from '../Items/Button'
 import { useStyles } from '../Styles/Login'
+import { Paper, Grid, Typography, Button as UIButton } from '@material-ui/core'
 
-const Login = inject('recipeStore')(observer((props) => {
+const Login = inject('recipeStore', 'userStore', 'inputStore')(observer((props) => {
     const classesRoot = useRootStyles()
     const classes = useStyles()
 
     const { pathname } = useLocation()
+
+    let { firstName, lastName, email, password } = props.inputStore
+    let { checkUser, saveNewUser } = props.userStore
     const page = pathname.split('/')[2]
     const header = (page === 'login' ? 'LOGIN' : 'SIGN UP')
 
-    const handleClick = async () => {
+    const capitalize = string => {
+        if (typeof string !== 'string') return ''
+        string = string.toLowerCase()
+        return string.charAt(0).toUpperCase() + string.slice(1)
+    }
 
+    const handleClick = async () => {
+        const dataMessage =
+            page === 'login'
+                ? await handleLogin()
+                : await handleSignUp()
+        if (dataMessage) {
+            // setServerMessage(dataMessage)
+        }
+    }
+
+    const handleLogin = async () => { //need to fix
+        const result = await checkUser({ email, password })
+        console.log(result)
+    }
+
+    const handleSignUp = async () => {
+        firstName = capitalize(firstName)
+        lastName = capitalize(lastName)
+        saveNewUser({ firstName, lastName, email, password })
     }
 
     return (
