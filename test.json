@@ -1,0 +1,141 @@
+{
+    "properties": {
+        "firstName": "Amelia",
+        "lastName": "Walcek",
+        "email": "ameliawalcek@gmail.com",
+        "phone": "0586700402",
+        "city": "Tel Aviv",
+        "countryCode": "972",
+        "linkedInUrl": "https://www.linkedin.com/in/amelia-walcek-a442a6130/",
+        "githubUrl": "https://github.com/ameliawalcek",
+        "workExperience": [
+            {
+                "fromDate": "2020",
+                "toDate": "2020",
+                "responsibilities": [
+                    "Intensive industry-based 3-month coding Bootcamp (MERN stack)",
+                    "Built multiple interactive end-to-end websites and single-page applications",
+                    "Emphasized self-learning and problem-solving",
+                    "Competed in both a hackathon and a sprint",
+                    "Collaborated within teams using Agile development workflow"
+                ],
+                "description": "Full Stack Boot Camp",
+                "title": "Full Stack Web Developer Student",
+                "company": "Elevation Academy"
+            },
+            {
+                "fromDate": "2018",
+                "toDate": "2020",
+                "responsibilities": [
+                    "Organized conferences in: Washington D.C., Paris, Dublin, Thessaloniki, Barcelona, Kyoto, etc.",
+                    "Managed clients, invited faculty and international delegates",
+                    "Coordinated each department to ensure a unified purpose",
+                    "Developed extensive marketing plans",
+                    "Secured vendors for signage, printed materials, and AV"
+                ],
+                "description": "Executed full-cycle yearly global conferences (25 - 4,00 participants)",
+                "title": "Assistant Project Manager",
+                "company": "Comtec Group"
+            },
+            {
+                "fromDate": "2013",
+                "toDate": "2015",
+                "responsibilities": [
+                    "Headed the scientific program for global medical conferences",
+                    "Designed conference website, mobile application, and printed materials"
+                ],
+                "description": "Headed the scientific program for global medical conferences",
+                "title": "Scientific Program Coordinator",
+                "company": "Kenes Group"
+            }
+        ],
+        "skills": {
+            "workingKnowledge": [
+                "JavaScript",
+                "React",
+                "MobX",
+                "socket.io",
+                "jQuery",
+                "Axios",
+                "HTML",
+                "JSON",
+                "CSS",
+                "Materialize",
+                "Bootstrap",
+                "Material UI",
+                "Node.js",
+                "Express",
+                "MongoDB",
+                "Mongoose",
+                "SQL",
+                "MySQL",
+                "Sequelize",
+                "Puppeteer",
+                "Cheerio",
+                "webhooks",
+                "bcrypt",
+                "validator",
+                "Git",
+                "Github",
+                "NPM",
+                "Heroku",
+                "Atlas",
+                "Windows/Linux/OS X"
+            ],
+            "basicKnowledge": [
+                "Collaborative",
+                "Detail-oriented",
+                "Patient",
+                "Organized",
+                "Enthusiastic",
+                "Analytical",
+                "Efficient",
+                "Adaptive"
+            ],
+            "ide": [
+                "Visual Studios"
+            ]
+        },
+        "education": [
+            {
+                "establishment": "Ben-Guirion University",
+                "degree": "Desert Ecology (M.Sc.)",
+                "city": "Sde Boker",
+                "countryCode": "972",
+                "fromYear": 2013,
+                "toYear": 2015
+            },
+            {
+                "establishment": "Boston University",
+                "degree": "Biology (B.Sc.)",
+                "city": "Boston",
+                "countryCode": "001",
+                "fromYear": 2008,
+                "toYear": 2012
+            }
+        ],
+        "languages": [
+            "English",
+            "minor Hebrew"
+        ],
+        "hobbies": [
+            "video games",
+            "running",
+            "dance",
+            "reading sci-fi"
+        ]
+    },
+    "required": [
+        "firstName",
+        "lastName",
+        "email",
+        "phone",
+        "city",
+        "countryCode",
+        "workExperience",
+        "skills",
+        "education",
+        "languages",
+        "hobbies"
+    ]
+}

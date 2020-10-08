@@ -15,7 +15,7 @@ const RecipeCards = inject('recipeStore')(observer((props) => {
                         direction="row"
                         justify="center"
                         alignItems="center"
-                        key={result} 
+                        key={Math.random()} 
                         xs={12} sm={4} md={3} lg={3}
                     >
                         <RecipeCard recipe={result}/>

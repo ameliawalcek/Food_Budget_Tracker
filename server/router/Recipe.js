@@ -2,6 +2,7 @@ const express = require("express");
 const recipeRouter = express.Router();
 const dataSources = require("../dataSources/DataSources");
 const CircularJSON = require('circular-json')
+const axios = require('axios').default
 
 recipeRouter.get('/:id', async (req, res) => {
     let { id } = req.params
@@ -22,4 +23,10 @@ recipeRouter.get('/ingredient/search', async (req, res) => {
     res.send(await dataSources.foodAPI.searchIngredient(input))
 })
 
+recipeRouter.post('/bulkRecipes', async (req, res) => {
+    let { ids } = req.body
+    ids = ids.toString()
+    let response = await dataSources.foodAPI.getRecipesByBulk(ids)
+    res.send(CircularJSON.stringify(response.data))
+})
 module.exports = recipeRouter;

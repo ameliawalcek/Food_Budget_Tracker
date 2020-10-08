@@ -12,7 +12,7 @@ import Login from './components/Login/Login'
 import Favorites from './components/Favorites/Favorites'
 import Loading from './components/Loader/Loading'
 
-const App = inject("userStore")(observer(props => {
+const App = inject("userStore", "recipeStore")(observer(props => {
   const { darkState, isLoggedIn, cookieLogIn, loading } = props.userStore
   const darkTheme = useTheme(darkState)
   useIsAuth(cookieLogIn)
@@ -38,7 +38,7 @@ const App = inject("userStore")(observer(props => {
           }
         </div>
       </ThemeProvider>
-    </Router>
+    </Router >
   )
 }))
 
