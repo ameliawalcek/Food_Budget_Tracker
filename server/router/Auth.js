@@ -39,7 +39,6 @@ authRouter.post('/signup', async (req, res) => {
             newUser
                 .save()
                 .then(user => {
-                    console.log(user)
                     res
                         .status(201)
                         .send(user)

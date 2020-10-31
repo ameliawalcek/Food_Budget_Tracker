@@ -11,6 +11,7 @@ import NavBar from './components/Nav/NavBar'
 import Login from './components/Login/Login'
 import Favorites from './components/Favorites/Favorites'
 import Loading from './components/Loader/Loading'
+//working on dotmenu need to select ingredient and add/remove from lists
 
 const App = inject("userStore", "recipeStore")(observer(props => {
   const { darkState, isLoggedIn, cookieLogIn, loading } = props.userStore

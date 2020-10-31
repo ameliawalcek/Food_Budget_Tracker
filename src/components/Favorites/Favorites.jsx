@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { observer, inject } from 'mobx-react'
 import RecipeCards from '../RecipeCard/RecipeCards'
 import { Paper } from '@material-ui/core'
@@ -7,20 +7,24 @@ import { useRootStyles } from '../Styles/Root'
 const Favorites = inject('userStore', 'recipeStore')(observer((props) => {
     const classesRoot = useRootStyles()
     const { user } = props.userStore
-    const { getRecipeBulk } = props.recipeStore
+    const { getRecipeBulk, pageInfo } = props.recipeStore
 
-    let favorites = user.favoriteRecipes && getRecipeBulk(user.favoriteRecipes)
+    useEffect(() => {
+        user.favoriteRecipes && getRecipeBulk(user.favoriteRecipes)
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     return (
         <>
-            {/* {
-                favorites &&
-                <Paper square className={classesRoot.paperRoot}>
-                    <Paper square elevation={0}>
-                        <RecipeCards recipes={user.favoriteRecipes} />
-                    </Paper>
+            <Paper square className={classesRoot.paperRoot}>
+                <Paper square elevation={0}>
+                    {pageInfo.length &&
+                        <RecipeCards recipes={pageInfo} />
+                    }
                 </Paper>
-            } */}
+            </Paper>
+
         </>
     )
 }))

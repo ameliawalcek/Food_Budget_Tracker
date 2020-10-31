@@ -3,15 +3,23 @@ import { observer, inject } from 'mobx-react'
 import { Grid, Typography, Switch } from '@material-ui/core'
 import DotMenu from '../Items/DotMenu'
 
-const RecipeOverview = inject('recipeStore')(observer((props) => {
+const RecipeOverview = inject('recipeStore', 'userStore')(observer((props) => {
     const { recipeOverview, setChecked, checked } = props.recipeStore
+    const { user } = props.userStore
 
     const toggleChecked = () => setChecked()
 
-    let unit = checked ? 'metric' : 'us'
+    const checkUserList = (ingredientId) => {
+        let menuItems = []
+        const kitchen = user.kitchenList.includes(ingredientId)
+        const shopping = user.shoppingList.includes(ingredientId)
+        
+        kitchen ? menuItems.push({ label: 'Remove from pantry', id: ingredientId }) : menuItems.push({ label: 'Add to pantry', id: ingredientId })
+        shopping ? menuItems.push({ label: 'Remove from list', id: ingredientId }) : menuItems.push({ label: 'Add to list', id: ingredientId })
+        return menuItems
+    }
 
-    //need to make this dynamic
-    const menuItems = ['Add to list', 'Remove from list', 'Add to kitchen', 'Remove from kitchen']
+    let unit = checked ? 'metric' : 'us'
 
     return (
         <>
@@ -25,12 +33,13 @@ const RecipeOverview = inject('recipeStore')(observer((props) => {
                 </Grid>
             </Typography>
 
-            {recipeOverview.extendedIngredients &&
+            {recipeOverview.extendedIngredients && user.kitchenList &&
                 recipeOverview.extendedIngredients.map(ingredient => {
+                    console.log(ingredient)
                     return (
                         <div className='ingredient' key={ingredient.id}>
                             <img className='ingredient-img' src={`https://spoonacular.com/cdn/ingredients_100x100/${ingredient.image}`} alt={ingredient.name} />
-                            <DotMenu option={menuItems} />
+                            <DotMenu option={checkUserList(ingredient.id)} />
                             <br />
                             <span>
                                 {unit === 'metric'

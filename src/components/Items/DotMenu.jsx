@@ -8,7 +8,13 @@ const DotMenu = inject('inputStore')(observer((props) => {
 
     const handleClick = (event) => setAnchorEl(event.currentTarget)
 
-    const handleClose = () => setAnchorEl(null)
+    const handleClose = (event) => {
+        setAnchorEl(null)
+        const { value } = event.target
+        console.log(value)
+        console.log(event.target.textContent)
+        // if(value ==='')
+    }
 
     return (
         <>
@@ -27,7 +33,7 @@ const DotMenu = inject('inputStore')(observer((props) => {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
             >
-                {props.option.map(o => <MenuItem key={o} onClick={handleClose}>{o}</MenuItem>)}
+                {props.option.map(o => <MenuItem key={Math.random()} value={o.label} onClick={handleClose}>{o.label}</MenuItem>)}
             </Menu>
         </>
     )

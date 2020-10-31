@@ -2,7 +2,6 @@ const express = require("express");
 const recipeRouter = express.Router();
 const dataSources = require("../dataSources/DataSources");
 const CircularJSON = require('circular-json')
-const axios = require('axios').default
 
 recipeRouter.get('/:id', async (req, res) => {
     let { id } = req.params

@@ -1124,6 +1124,7 @@ export class RecipeStore {
         ]
     @observable loading = false
     @observable checked = false
+    @observable pageInfo = []
 
     @action setLoading = (bool) => this.loading = bool
 
@@ -1154,7 +1155,7 @@ export class RecipeStore {
         this.setLoading(true)
         let data = { 'ids': ids }
         let response = await axios.post(`http://localhost:3001/recipe/bulkRecipes`, data)
-        console.log(response.data)
+        this.pageInfo = response.data
         this.setLoading(false)
     }
 

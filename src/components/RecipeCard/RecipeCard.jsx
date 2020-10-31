@@ -22,6 +22,8 @@ const RecipeCard = inject('userStore')(observer((props) => {
             : addItem(recipe.id, 'favoriteRecipes')
     }
 
+    const subheader = recipe.likes ===! undefined ? recipe.likes : recipe.aggregateLikes
+
     return (
         <Card className={classes.root}>
             <CardHeader
@@ -30,7 +32,7 @@ const RecipeCard = inject('userStore')(observer((props) => {
                     <DotMenu option={menuItems} />
                 }
                 title={recipe.title}
-                subheader={`${recipe.likes} likes`}
+                subheader={`${subheader} likes`}
             />
             <CardMedia
                 component={Link}
