@@ -20,7 +20,6 @@ export class InputStore {
     }
 
     @action async searchIngredient() {
-        console.log('hello')
         let response = await axios(`http://localhost:3001/recipe/ingredient/search?input=${this.searchInput}`)
         this.ingredientOptions = response.data
     }

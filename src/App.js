@@ -25,9 +25,10 @@ const App = inject("userStore", "recipeStore")(observer(props => {
           {loading
             ? <Loading />
             : <>
-              <Route exact path="/auth/login" render={() => (isLoggedIn ? <Redirect to="/" /> : <Login />)} />
-              <Route exact path="/auth/register" render={() => (isLoggedIn ? <Redirect to="/" /> : <Login />)} />
-              <Route exact path="/" render={() => <SearchPage />} />
+              <Route exact path="/" render={() => (isLoggedIn ? <Redirect to="/search" /> : <Login />)} />
+              <Route exact path="/auth/login" render={() => (isLoggedIn ? <Redirect to="/search" /> : <Login />)} />
+              <Route exact path="/auth/register" render={() => (isLoggedIn ? <Redirect to="/search" /> : <Login />)} />
+              <Route exact path="/search" render={() => <SearchPage />} />
               <Route exact path="/profile" render={() => <SearchPage />} />
               <Route exact path="/recipe/:id" render={() => <RecipePage />} />
               <Route exact path="/list" render={() => <RecipePage />} />
