@@ -6,7 +6,6 @@ import DotMenu from '../Items/DotMenu'
 const RecipeOverview = inject('recipeStore', 'userStore')(observer((props) => {
     const { recipeOverview, setChecked, checked } = props.recipeStore
     const { user } = props.userStore
-
     const toggleChecked = () => setChecked()
 
     const checkUserList = (ingredientId) => {
@@ -35,7 +34,6 @@ const RecipeOverview = inject('recipeStore', 'userStore')(observer((props) => {
 
             {recipeOverview.extendedIngredients && user.kitchenList &&
                 recipeOverview.extendedIngredients.map(ingredient => {
-                    console.log(ingredient)
                     return (
                         <div className='ingredient' key={ingredient.id}>
                             <img className='ingredient-img' src={`https://spoonacular.com/cdn/ingredients_100x100/${ingredient.image}`} alt={ingredient.name} />

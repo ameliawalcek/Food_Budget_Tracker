@@ -6,7 +6,7 @@ class FoodAPI {
     constructor() {
         this.baseUrl = `https://api.spoonacular.com`
         this.baseRecipeUrl = `https://api.spoonacular.com/recipes`
-        // this.key = SPOONACULAR_API_KEY
+        this.key = SPOONACULAR_API_KEY
         // this.key = SPOONACULAR_API_KEY_TWO
     }
 
@@ -46,12 +46,15 @@ class FoodAPI {
     }
 
     async searchIngredient(ingredient) {
-
         return (await axios(`${this.baseUrl}/food/ingredients/autocomplete?apiKey=${this.key}&query=${ingredient}&number=1`)).data
     }
 
     async getRecipesByBulk(ids) {
         return (await axios(`${this.baseRecipeUrl}/informationBulk?apiKey=${this.key}&ids=${ids}`))
+    }
+
+    async getIngredientInfo(id) {
+        return (await axios(`${this.baseRecipeUrl}/food/ingredients/${id}/information`))
     }
 
     // async getRecipeDetails(id, string){

@@ -11,6 +11,7 @@ import NavBar from './components/Nav/NavBar'
 import Login from './components/Login/Login'
 import Favorites from './components/Favorites/Favorites'
 import Loading from './components/Loader/Loading'
+import IngredientList from './components/List/IngredientList'
 //working on dotmenu need to select ingredient and add/remove from lists
 
 const App = inject("userStore", "recipeStore")(observer(props => {
@@ -32,9 +33,9 @@ const App = inject("userStore", "recipeStore")(observer(props => {
               <Route exact path="/search" render={() => <SearchPage />} />
               <Route exact path="/profile" render={() => <SearchPage />} />
               <Route exact path="/recipe/:id" render={() => <RecipePage />} />
-              <Route exact path="/list" render={() => <RecipePage />} />
+              <Route exact path="/list" render={() => <IngredientList />} />
               <Route exact path="/favorites" render={() => <Favorites />} />
-              <Route exact path="/kitchen" render={() => <RecipePage />} />
+              <Route exact path="/kitchen" render={() => <IngredientList />} />
               <Route exact path="/weekplan" render={() => <WeekPlanner />} />
             </>
           }

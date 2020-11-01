@@ -1159,6 +1159,15 @@ export class RecipeStore {
         this.setLoading(false)
     }
 
+    @action getIngredientInfo = async (ids) => {
+        this.setLoading(true)
+        let data = { 'ids': ids }
+        let response = await axios.post(`http://localhost:3001/recipe/ingredientList`, data)
+        console.log(response.data)
+        this.pageInfo = response.data
+        this.setLoading(false)
+    }
+
     @action getDollars = cents => {
         let dollars = cents / 100
         return dollars.toLocaleString('en-US', { style: "currency", currency: "USD" })

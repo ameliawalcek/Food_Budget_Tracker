@@ -68,13 +68,13 @@ export class UserStore {
             { userId: this.user._id, itemId, listName })
     }
 
-    @action deleteItem = async (id, listName) => {
-        this.user.favoriteRecipes = this.user.favoriteRecipes
-            .filter(favorite => favorite !== id)
+    @action deleteItem = async (itemId, listName) => {
+        this.user[listName] = this.user[listName]
+            .filter(item => item !== itemId)
         await axios.put(`http://localhost:3001/user/item`,
             {
                 userId: this.user._id,
-                itemId: id,
+                itemId: itemId,
                 listName: listName
             })
     }
