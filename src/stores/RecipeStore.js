@@ -1158,13 +1158,22 @@ export class RecipeStore {
         this.pageInfo = response.data
         this.setLoading(false)
     }
+    // async function logUsers (userIds)  {
+    //     await Promise.all(userIds.map(async userId => {
+    //       const response = await fetch(`/api/users/${userId}`);
+    //       const user = await response.json();
+    //       console.log(user);
+    //     }));
+    //   }
 
     @action getIngredientInfo = async (ids) => {
         this.setLoading(true)
-        let data = { 'ids': ids }
-        let response = await axios.post(`http://localhost:3001/recipe/ingredientList`, data)
-        console.log(response.data)
-        this.pageInfo = response.data
+        let allPromise = await Promise.all(ids.map(async id => {
+            let response = await axios.post(`http://localhost:3001/recipe/ingredient/${id}`)
+            console.log(response.data)
+        }))
+        console.log(allPromise)
+        // this.pageInfo = response.data
         this.setLoading(false)
     }
 

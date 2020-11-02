@@ -54,7 +54,10 @@ class FoodAPI {
     }
 
     async getIngredientInfo(id) {
-        return (await axios(`${this.baseRecipeUrl}/food/ingredients/${id}/information`))
+        console.log('hello')
+        let result = await axios(`${this.baseRecipeUrl}/food/ingredients/${id}/information?apiKey=${this.key}`)
+        console.log(result)
+        return result
     }
 
     // async getRecipeDetails(id, string){

@@ -29,16 +29,12 @@ recipeRouter.post('/bulkRecipes', async (req, res) => {
     res.send(CircularJSON.stringify(response.data))
 })
 
-recipeRouter.post('/ingredientList', async (req, res) => {
-    console.log('in ingred db')
-    const { ids } = req.body
-    let list = []
-    let results = await Promise.all(ids.map(async id => {
-        await dataSources.foodAPI.getIngredientInfo(id)
-        list.push(response.data)
-    }))
-    console.log(results)
-    console.log(list)
+recipeRouter.get('/ingredient/:id', async (req, res) => {
+    let { id } = req.params
+    const response = await dataSources.foodAPI.getIngredientInfo(id)
+
+    console.log(response)
+    res.end()
 })
 
 module.exports = recipeRouter;

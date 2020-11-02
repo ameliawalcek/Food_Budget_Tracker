@@ -9,16 +9,12 @@ const IngredientList = inject('recipeStore', 'userStore')(observer((props) => {
     const location = useLocation()
     let list = user.kitchenList &&
         location.pathname === '/kitchen' ? user.kitchenList : user.shoppingList
+    console.log(list)
+    
+    if (list) {
         console.log(list)
-    useEffect(() => {
-        if(list){
-            console.log(list)
-            user.kitchenList && getIngredientInfo(list)
-        }
-        return
-        
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+        user.kitchenList && getIngredientInfo(list)
+    }
 
     // const checkUserList = (ingredientId) => {
     //     let menuItems = []
