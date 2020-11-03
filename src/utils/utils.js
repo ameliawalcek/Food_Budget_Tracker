@@ -5,6 +5,7 @@ export const setCookie = (secret) => {
 }
 
 export const deleteCookie = () => {
+    console.log('deleting cookie')
     document.cookie = 'user=null'
 }
 

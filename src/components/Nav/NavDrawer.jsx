@@ -23,6 +23,7 @@ const NavDrawer = inject('userStore')(observer((props) => {
 
     const handleDrawerOpen = () => setOpen(true)
     const handleDrawerClose = () => setOpen(false)
+    console.log(isLoggedIn, 'is logged in')
 
     const icons = [
         { icon: <SearchIcon />, link: '/', title: `Search` },

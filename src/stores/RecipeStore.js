@@ -1158,13 +1158,6 @@ export class RecipeStore {
         this.pageInfo = response.data
         this.setLoading(false)
     }
-    // async function logUsers (userIds)  {
-    //     await Promise.all(userIds.map(async userId => {
-    //       const response = await fetch(`/api/users/${userId}`);
-    //       const user = await response.json();
-    //       console.log(user);
-    //     }));
-    //   }
 
     @action getIngredientInfo = async (ids) => {
         this.setLoading(true)
