@@ -6,7 +6,7 @@ class FoodAPI {
     constructor() {
         this.baseUrl = `https://api.spoonacular.com`
         this.baseRecipeUrl = `https://api.spoonacular.com/recipes`
-        // this.key = SPOONACULAR_API_KEY
+        this.key = SPOONACULAR_API_KEY
         // this.key = SPOONACULAR_API_KEY_TWO
     }
 
