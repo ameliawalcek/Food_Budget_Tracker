@@ -34,9 +34,8 @@ const Login = inject('recipeStore', 'userStore', 'inputStore')(observer((props) 
         }
     }
 
-    const handleLogin = async () => { //need to fix
-        const result = await checkUser({ email, password })
-        console.log(result)
+    const handleLogin = async () => {
+        await checkUser({ email, password })
     }
 
     const handleSignUp = async () => {

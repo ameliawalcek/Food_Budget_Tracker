@@ -23,7 +23,6 @@ const NavDrawer = inject('userStore')(observer((props) => {
 
     const handleDrawerOpen = () => setOpen(true)
     const handleDrawerClose = () => setOpen(false)
-    console.log(isLoggedIn, 'is logged in')
 
     const icons = [
         { icon: <SearchIcon />, link: '/', title: `Search` },
@@ -36,11 +35,11 @@ const NavDrawer = inject('userStore')(observer((props) => {
     return (
         <>
             <IconButton
-                edge="start"
+                edge='start'
                 className={classes.menuButton}
                 onClick={handleDrawerOpen}
-                color="inherit"
-                aria-label="open drawer"
+                color='inherit'
+                aria-label='open drawer'
             >
                 <MenuIcon />
             </IconButton>
@@ -62,7 +61,7 @@ const NavDrawer = inject('userStore')(observer((props) => {
                         style={{ height: 60 }}
                     >
                         <ListItemIcon>
-                            <Avatar color="secondary" alt={user.firstName} src="/static/images/avatar/1.jpg" />
+                            <Avatar color='secondary' alt={user.firstName} src='/static/images/avatar/1.jpg' />
                         </ListItemIcon>
                         <ListItemText primary='My Profile' />
                     </ListItem>

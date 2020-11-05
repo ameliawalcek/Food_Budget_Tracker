@@ -59,10 +59,9 @@ authRouter.post('/login', async (req, res) => {
         res.status(401).send('email not in data base')
     } else {
         const hash = isUserEmailInDB.password
-        await bcrypt.compare(password, hash) ?
-            res.status(202).send({ _id: isUserEmailInDB._id, msg: 'user found in database' })
-            :
-            res.status(401).send('passwords does not match')
+        await bcrypt.compare(password, hash)
+            ? res.status(202).send({ _id: isUserEmailInDB._id, msg: 'user found in database' })
+            : res.status(401).send('passwords does not match')
     }
 })
 

@@ -34,7 +34,7 @@ export class UserStore {
             })
     }
 
-    @action async checkUser(user) {
+    @action checkUser = async (user) => {
         return await axios.post("http://localhost:3001/auth/login", user)
             .then(res => {
                 this.setLogIn(true)
